@@ -43,9 +43,9 @@ export function getInterviewersForDay(state, day) {
     return result;
   }
 
-  for (const appointment of findDay.appointments) {
+  for (const id of findDay.interviewers) {
 
-    result.push(state.interviewers[appointment]);
+    result.push(state.interviewers[id]);
   }
   return result;
 }

@@ -4,6 +4,9 @@ import InterviewerListItem from "./InterviewerListItem";
 
 const InterviewerList = function(props) {
   console.log("Interviewer List:", props);
+  if (!props.interviewers[0]){
+    return "no interviewers"
+  }
   return (
     <section className="interviewers">
       <h4 className="interviewers__header text--light">Interviewer</h4>
