@@ -37,12 +37,26 @@ export default function Application(props) {
       ...state.appointments,
       [id]: appointment
     };
-    console.log("Logging state and apps",{...state, appointments});
+
     return axios.put(`/api/appointments/${id}`, {interview})
     .then(() => setState({...state, appointments}))
-    
   }
 
+  //DELETE INTERVIEW
+  function cancelInterview(id, interview) {
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview }
+    };
+
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+    return axios.delete(`/api/appointments/${id}`)
+      .then(() => setState({ ...state, appointments }))
+
+  }
 
   useEffect(() => {
     // const apiDays = `http://localhost:8001/api/days`;
@@ -93,6 +107,7 @@ export default function Application(props) {
               interview={getInterview(state, appointment.interview)}
               interviewers={dailyInterviewers}
               bookInterview={bookInterview}
+              cancelInterview={cancelInterview}
             />);
         })}
         <Appointment key="last" time="5pm" />
