@@ -7,6 +7,7 @@ import Status from "./Status";
 import Form from "./Form";
 import Confirm from "./Confirm";
 import useVisualMode from "hooks/useVisualMode";
+import Error from "./Error";
 
 
 const EMPTY = "EMPTY";
@@ -16,6 +17,8 @@ const SAVING = "SAVING";
 const CONFIRM = "CONFIRM";
 const DELETING = "DELETING";
 const EDIT = "EDIT";
+const ERROR_SAVE = "ERROR_SAVE"
+const ERROR_DELETE = "ERROR_DELETE"
 
 const Appointment = function(props) {
   const { mode, transition, back } = useVisualMode(
@@ -30,15 +33,15 @@ const Appointment = function(props) {
     };
     transition(SAVING);
     props.bookInterview(props.id, interview)
-      .then(() => (transition(SHOW)));
-  }
-  
-  const deleteInterview = () => {
-    transition(DELETING);
-    props.cancelInterview(props.id)
-      .then(() => {
-        transition(EMPTY);
-      });
+      .then(() => (transition(SHOW)))
+      .catch(error => transition(ERROR_SAVE, true));
+    }
+    
+    const deleteInterview = () => {
+      transition(DELETING, true);
+      props.cancelInterview(props.id)
+      .then(() => (transition(EMPTY)))
+        .catch(error => transition(ERROR_DELETE, true));
   };
 
   const confirmDelete = () => {
@@ -56,7 +59,7 @@ const Appointment = function(props) {
       )}
       {mode === EDIT && (
         <Form
-         name={props.interview.student}
+         student={props.interview.student}
          interviewer={props.interview.interviewer["id"]}
          interviewers={props.interviewers}
          onCancel={back}
@@ -70,6 +73,8 @@ const Appointment = function(props) {
         onConfirm={deleteInterview} />}
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
       {mode === SAVING && <Status message={"SAVING"} />}
+      {mode === ERROR_SAVE && <Error message="Could not save 😭" onClose={back} />}
+      {mode === ERROR_DELETE && <Error message="Could not delete 😭" onClose={back} />}
       {mode === SHOW && (
         <Show
           student={props.interview.student}
@@ -77,7 +82,7 @@ const Appointment = function(props) {
           onDelete={confirmDelete}
           onEdit={() => transition(EDIT)}
         />
-      )}
+        )}
 
     </article>
 
