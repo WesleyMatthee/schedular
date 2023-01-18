@@ -52,7 +52,7 @@ const Appointment = function(props) {
   return (
 
 
-    <article className="appointment">
+    <article className="appointment" data-testid="appointment">
       <Header time={props.time} />
       {mode === CREATE && (
         <Form interviewers={props.interviewers} onCancel={back} onSave={save} />
@@ -72,7 +72,7 @@ const Appointment = function(props) {
         onCancel={back}
         onConfirm={deleteInterview} />}
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
-      {mode === SAVING && <Status message={"SAVING"} />}
+      {mode === SAVING && <Status message={"Saving"} />}
       {mode === ERROR_SAVE && <Error message="Could not save 😭" onClose={back} />}
       {mode === ERROR_DELETE && <Error message="Could not delete 😭" onClose={back} />}
       {mode === SHOW && (
