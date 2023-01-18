@@ -87,11 +87,11 @@ export default {
     });
   }),
 
-  // delete: jest.fn(() => {
-  //   return Promise.resolve({
-  //     status: 200,
-  //     statusText: "OK",
-  //   });
-  // }),
+  delete: jest.fn(() => {
+    return Promise.resolve({
+      status: 200,
+      statusText: "OK",
+    });
+  }),
 };
 
