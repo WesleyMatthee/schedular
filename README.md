@@ -14,7 +14,7 @@ The interview scheduler is an web application that tracks student interviews bui
 - A user can switch between days and see detailed information
 - Booked and available slots are clearly differentiated
 - A user can book interviews by typing in a student name and clicking on an interviewer from a list of interviewers
-- A user can change the details of an existing interview by pressing the edit icon
+- A user can change the details of an existing interview by clicking the edit icon
 - A user can cancel an existing interview, a message in the appointment will ask to confirm the action before permanently deleting an interview as well as display 
 
 ---
@@ -42,5 +42,48 @@ npm run storybook
 ## Preview
 
 ### Homepage
-[Homepage](https://github.com/WesleyMatthee/schedular/blob/master/docs/Scheduler-full%20day.png?raw=true)
+![Homepage](https://github.com/WesleyMatthee/schedular/blob/master/docs/Scheduler-full%20day.png?raw=true)
 
+![create](https://github.com/WesleyMatthee/schedular/blob/master/docs/Scheduler-%20make%20appointment.png?raw=true)
+
+![slots](https://github.com/WesleyMatthee/schedular/blob/master/docs/Scheduler-appointment%20slots.png?raw=true)
+
+## API server and Database Setup
+### For full functionality both must run concurrently: the client and the API server applications.
+- Click [here](https://github.com/lighthouse-labs/scheduler-api) to start by *forking* and *cloning* the scheduler-api server
+- Follow the steps outlined in README to *install* and *setup* the database
+- Fork and clone this repo
+- Navigate to the root directory and *install* dependencies with `npm install`
+- Once you have the database setup and the scheduler-api server running, run the following command from the root directory of the project ➜ **`npm start`**
+#
+## `Project Stack`
+### Front-End: 
+React, Axios, JSX, HTML, SASS, JavaScript
+
+### Back-End: 
+Express, Node.js, PostgreSQL
+
+### Testing: 
+Storybook, Webpack Dev Server, Jest, Testing Library and Cypress
+
+#
+## Dependencies
+- Axios
+- Classnames
+- Normalize.css
+- React
+- React-dom
+- React-scripts
+- Babel/core
+- Storybook/addon-actions
+- Storybook/addon-backgrounds
+- Storybook/addon-links
+- Storybook/addons
+- Storybook/react
+- Testing-library/jest-dom
+- Testing-library/react
+- Testing-library/react-hooks
+- Babel-loader
+- Node-sass
+- Prop-types
+- React-test-renderer
