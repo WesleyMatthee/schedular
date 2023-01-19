@@ -42,5 +42,5 @@ npm run storybook
 ## Preview
 
 ### Homepage
-[Homepage](https://github.com/WesleyMatthee/schedular/blob/master/docs/Scheduler-full%20day.png)
+[Homepage](https://github.com/WesleyMatthee/schedular/blob/master/docs/Scheduler-full%20day.png?raw=true)
 
